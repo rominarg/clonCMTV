@@ -2,7 +2,7 @@
 
 Este proyecto fue creado con el propósito de práctica y aprendizaje en el desarrollo web. Se llevó a cabo una clonación de la página web CMTV con el objetivo de mejorar habilidades y comprender mejor los conceptos de diseño, maquetación y programación web.
 
-
+![Texto Alternativo](./img/romina_navarrete_clon_cmtv.png)
 
 ## Aviso Legal
 
