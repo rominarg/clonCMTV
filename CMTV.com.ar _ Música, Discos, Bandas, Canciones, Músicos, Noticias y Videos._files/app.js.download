@@ -1,0 +1,236 @@
+popupCerrado = true;// nostrar popo 0-false
+var hoverNoticias = false; 
+var hoverArtistas = false;
+var flotanteArtistasLoaded = false;
+var flotanteNoticiasLoaded = false;
+var flotanteBusquedaLoaded = false;
+
+jQuery(document).ready(function(){
+
+  
+  //Accion: Artistas
+  $("#artistas-flotar").hover(function() {
+      if(!flotanteArtistasLoaded){
+          $.get( "/includes/flotanteArtistas_ABC.php", function( data ) {
+            $(".flotante-artistas").html( data );
+            flotanteArtistasLoaded = true;
+          });
+      }
+      $(".flotante-artistas").toggle();
+      $('#desvanecimiento-02').toggle();
+      hoverArtistas = !hoverArtistas;
+  });
+  
+  $('#desvanecimiento-02').hover(function() {
+      $(".flotante-artistas").hide();
+      $('#desvanecimiento-02').hide();
+      $("#ArtistasLetraSeleccionada").html("");
+      $("#ArtistasLetraSeleccionada").hide();
+      $(".seleccionArtistaLetra li").removeClass("seleccionado");
+      hoverArtistas = !hoverArtistas;
+  });
+
+   $(".flotante-artistas").hover(function(){
+      $(".flotante-artistas").show();
+      $('#desvanecimiento-02').show();
+      hoverArtistas = true;
+   });
+
+
+  $(document).on("click", ".seleccionArtistaLetra li" , function(){
+      var letra = $(this).text();
+      $.ajax({
+         url: '/includes/flotanteArtistas.php',
+         data: { letra: letra },
+         type: 'GET',
+         error: function() {
+            //
+         },
+         success: function(data) {
+            $("#ArtistasLetraSeleccionada").html(data);
+            $("#ArtistasLetraSeleccionada").show();
+            $(".seleccionArtistaLetra li").removeClass("seleccionado");
+            $(".seleccionArtistaLetra li").each(function(){
+                if($(this).text() === letra)
+                    $(this).addClass("seleccionado");
+            });
+         }
+      });
+
+  });
+
+  //Accion: Cerrar Pop-Up
+  $(".cerrar-popup").click(function() {
+    $(".popup").hide('fast');
+    popupCerrado = true;
+  });
+  
+  //Accion: Ranking
+  $(".rock").click(function() {
+    $(".seccion-pop").toggle();
+    $(".seccion-rock").toggle();
+  });
+  $(".pop-latino").click(function() {
+    $(".seccion-pop").toggle();
+    $(".seccion-rock").toggle();
+  });
+  
+  $(".clickeable").click(function() {
+    window.location = $(this).find("a").attr("href"); 
+    return false;
+  });
+                         
+  //Accion: Noticias  
+  $("#noticias-flotar").hover(function(){
+      if(!flotanteNoticiasLoaded){
+          $.get( "/includes/flotanteNoticias.php", function( data ) {
+            $(".flotante-noticias").html( data );
+            flotanteNoticiasLoaded = true;
+          });
+      }
+
+      if(!hoverNoticias){
+          $(".flotante-noticias").show();
+          $('#desvanecimiento-01').show();
+          hoverNoticias = true; 
+      }
+  });
+
+  $(".flotante-noticias").hover(function(){
+      $(this).show();
+      $('#desvanecimiento-01').show();
+      hoverNoticias = true;
+      
+  });
+
+  $("#desvanecimiento-01").hover(function(){
+      $(".flotante-noticias").hide();
+      $('#desvanecimiento-01').hide();
+      hoverNoticias = false; 
+  });
+
+  $(".nav.navbar-nav li a").hover(function(){
+        if(!($(this).attr('id') === 'artistas-flotar')){
+            $('.flotante-artistas').hide();
+            $("#ArtistasLetraSeleccionada").html("");
+            $("#ArtistasLetraSeleccionada").hide();
+            $(".seleccionArtistaLetra li").removeClass("seleccionado");
+            $('#desvanecimiento-02').hide();
+            hoverArtistas = false;
+        }
+        if(!($(this).attr('id') === 'noticias-flotar')){
+            $(".flotante-noticias").hide();
+            $('#desvanecimiento-01').hide();
+            hoverNoticias = false; 
+        }
+  });
+
+  //Accion: Buscador
+  jQuery("#abrir-buscador").click(function(){
+        jQuery(this).parent().fadeOut(150);
+        jQuery(".navegacion-buscador").fadeIn(150);
+	$("#flotar-busqueda").focus();  // nico select 
+  });
+
+  jQuery("#cerrar-buscador").click(function(){
+      jQuery(".navegacion-buscador").fadeOut(150);
+      jQuery("#abrir-buscador").parent().fadeIn(150);
+      jQuery("#abrir-buscador-buscador").fadeIn(150);
+      jQuery("#abrir-buscador-mobile").fadeIn(150);
+  });
+
+  jQuery("#abrir-buscador-mobile").click(function(){
+      jQuery(this).fadeOut(150);
+      jQuery(".navegacion-buscador").fadeIn(150);
+      $("#flotar-busqueda").focus();  // nico select
+  });
+  
+  $(document).on("keyup","#flotar-busqueda",function() {
+    $('.flotante-busqueda').hide();
+    $('.flotante-busqueda').html("");
+    if($(this).val().length > 3){
+            var palabra = $(this).val();
+            $.ajax({
+               url: '/includes/flotanteBusqueda.php',
+               data: { palabra: palabra },
+               type: 'GET',
+               error: function() {
+                  //
+               },
+               success: function(data) {
+                  $('.flotante-busqueda').html( data );
+                  $('.flotante-busqueda').fadeIn();
+               }
+            });
+    }
+  });
+
+  //Scroll navegacion: Logo
+  $window_y = $(window).scrollTop();
+  scroll_critical = parseInt(20);
+  if ($window_y > scroll_critical) {
+    $('.navbar-brand').css('opacity', '1');
+    if(popupCerrado == false){
+      $('.popup').show('fast');
+    }
+  } else {
+    $('.navbar-brand').css('opacity', '0');
+  }
+
+});
+
+//Scroll navegacion: Logo
+$(window).scroll(function () {
+  $window_y = $(window).scrollTop();
+  scroll_critical = parseInt(115);
+  if ($window_y > scroll_critical) {
+    $('.navbar-brand').css('opacity', '1');
+    if(popupCerrado == false){
+      $('.popup').show('fast');
+    }
+  } else {
+    $('.navbar-brand').css('opacity', '0');
+  }
+});
+
+
+
+/* Share-counts.js */
+var qk_share_winHeight = 600;
+var qk_share_winWidth = 600;
+var share_via = 'cmtvargentina';
+
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
+var share_url = window.location.href;
+share_url = replaceAll(share_url, "&", "%26")
+share_url = replaceAll(share_url, ":", "%3A")
+var share_url_counts = share_url;
+var share_url_counts_org = window.location.href;
+
+function share_qk(red) {
+    var share_title = $("#share_title").text();
+    var share_descr = $("#share_descr").text();
+    var share_image = $("#share_image").text();
+      var winTop = (screen.height / 2) - (qk_share_winHeight / 2);
+      var winLeft = (screen.width / 2) - (qk_share_winWidth / 2);
+      
+      if(red == 'share-facebook'){
+          window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + share_title + '&p[summary]=' + share_descr + '&p[url]=' + share_url + '&p[images][0]=' + share_image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + qk_share_winWidth + ',height=' + qk_share_winHeight);
+      }
+      else if(red == 'share-twitter'){
+          window.open('https://twitter.com/share?url='+ share_url +'&text='+ share_title + ' - ' + share_descr + '&via=' + share_via, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + qk_share_winWidth + ',height=' + qk_share_winHeight);
+      }
+      else if(red == 'share-google-plus'){
+        window.open('https://plus.google.com/share?url=' + share_url, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + qk_share_winWidth + ',height=' + qk_share_winHeight);   
+      }
+  }
+
+jQuery("#share-facebook, #share-twitter, #share-google-plus").click(function(){
+  share_qk(jQuery(this).attr('id'));
+});
+
+/* end Share-counts.js */
+

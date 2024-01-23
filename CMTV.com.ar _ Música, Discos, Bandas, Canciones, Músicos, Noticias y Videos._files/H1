@@ -1,0 +1,10 @@
+var imag = document.createElement("img");
+imag.src = "https://s.e-planning.net/esb/4/14/1488f/4e8fab1693bc2a7b.webp";
+
+var ct = document.createElement("a");
+ct.setAttribute("style", "cursor: pointer;");
+ct.appendChild(imag);
+document.body.appendChild(ct);
+ct.onclick = function(){
+    parent.window.open("https://a-iad04.e-planning.net/ei/3/93c0/4a87d4e505303b9a?ct=1&pb=ddde5ab1b8c672b2&fi=7c02a77ca9137350&rnd=0.19262696918749578&ur=https%3a%2f%2fwww.cmtv.com.ar%2f");
+}
