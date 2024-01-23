@@ -2,41 +2,6 @@
 
 Este proyecto fue creado con el propósito de práctica y aprendizaje en el desarrollo web. Se llevó a cabo una clonación de la página web CMTV con el objetivo de mejorar habilidades y comprender mejor los conceptos de diseño, maquetación y programación web.
 
-## Estructura del Proyecto
-
-El proyecto sigue una estructura básica para organizar los archivos:
-
-
-Claro, aquí tienes un ejemplo de contenido para un archivo README que explica que la práctica de clonar la página CMTV fue con fines educativos y de práctica:
-
-plaintext
-Copy code
-# Proyecto de Clonación CMTV
-
-Este proyecto fue creado con el propósito de práctica y aprendizaje en el desarrollo web. Se llevó a cabo una clonación de la página web CMTV con el objetivo de mejorar habilidades y comprender mejor los conceptos de diseño, maquetación y programación web.
-
-## Estructura del Proyecto
-
-El proyecto sigue una estructura básica para organizar los archivos:
-
-/tu-proyecto
-├── index.html
-├── style
-│ ├── main.css
-│ └── otras-hojas-de-estilo.css
-├── js
-│ ├── jquery.min.js
-│ ├── jquery.lazyload.js
-│ ├── jquery.bxslider.min.js
-│ ├── app.js.download
-│ ├── epl-41.js.download
-│ ├── script1.js
-│ └── script2.js
-├── img
-│ ├── imagen1.jpg
-│ ├── imagen2.png
-│ └── otras-imagenes
-└── otros-archivos
 
 
 ## Aviso Legal
