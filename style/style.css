@@ -1,6 +1,7 @@
 body {
     font-family: roboto_regular,sans-serif;
-    color: #191919;
+    background-color: #fff;
+    color: #ffffff;
 }
 
 
@@ -23,4 +24,39 @@ body {
     border-top: 0;
     border-left: 0;
     border-right: 0;
+}
+
+.navegacion-principal .social a.fa-background,
+.navegacion-principal .social i.fa-background {
+    width: 18px;
+    padding: 3px;
+    height: 18px;
+    font-size: 12px;
+    color: #191919;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.navegacion-principal .social a.fa, .navegacion-principal .social i.fa {
+    transition: all .5s ease;
+    text-align: center;
+}
+
+.navegacion-principal .social a, .navegacion-principal .social i {
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 20px;
+    margin-top: 11px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
