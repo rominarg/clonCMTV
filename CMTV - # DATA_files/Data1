@@ -1,0 +1,10 @@
+var imag = document.createElement("img");
+imag.src = "https://s.e-planning.net/esb/4/14/1488f/9cace9d3a74daedd.webp";
+
+var ct = document.createElement("a");
+ct.setAttribute("style", "cursor: pointer;");
+ct.appendChild(imag);
+document.body.appendChild(ct);
+ct.onclick = function(){
+    parent.window.open("https://a-iad04.e-planning.net/ei/3/93c0/2b3851cf48e5759a?ct=1&pb=ac26c751f50c0684&fi=9b077e668a705cee&rnd=0.9728163834789783&ur=https%3a%2f%2fcmtv.com.ar%2fdata%2f&d_nvg_gender=2&d_nvg_age=4&d_nvg_education=1&d_nvg_marital=2&d_nvg_income=2&d_nvg_interest=202|15|96&d_nvg_cluster=46");
+}

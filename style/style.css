@@ -62,14 +62,16 @@ body {
 .navbar,
 .navbar-default,
 .navegacion-principal {
-  font-family: 'bebas_regular', sans-serif;
-  font-size: 8px;
-  line-height: 10px;
-  text-align: start;
-  letter-spacing: normal; /* O ajusta según sea necesario */
+
 }
 
-
+.row {
+    font-family: 'bebas_light', sans-serif;
+    font-size: 20px;
+    line-height: 28.5714px;
+    text-align: left;
+    letter-spacing: 0.75px;
+}
 
 /* Estilos específicos para pantallas con un ancho de 1263px */
 @media screen and (min-width: 1263px) {
@@ -79,3 +81,5 @@ body {
       /* Agrega estilos específicos para pantallas grandes aquí */
     }
   }
+
+
