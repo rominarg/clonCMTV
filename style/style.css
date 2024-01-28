@@ -1,9 +1,7 @@
 body {
-    font-family: roboto_regular,sans-serif;
-    background-color: #fff;
-    color: #ffffff;
+    font-family: 'bebas_regular', sans-serif;
+    overflow-x: hidden;
 }
-
 
 .navegacion-principal {
     z-index: 34;
@@ -64,18 +62,20 @@ body {
 .navbar,
 .navbar-default,
 .navegacion-principal {
-  font-family: 'roboto_regular', sans-serif;
-  font-size: 14px;
-  line-height: 20px;
+  font-family: 'bebas_regular', sans-serif;
+  font-size: 8px;
+  line-height: 10px;
   text-align: start;
   letter-spacing: normal; /* O ajusta según sea necesario */
 }
 
+
+
 /* Estilos específicos para pantallas con un ancho de 1263px */
 @media screen and (min-width: 1263px) {
-  .navbar,
-  .navbar-default,
-  .navegacion-principal {
-    /* Agrega estilos específicos para pantallas grandes aquí */
+    .navbar,
+    .navbar-default,
+    .navegacion-principal {
+      /* Agrega estilos específicos para pantallas grandes aquí */
+    }
   }
-}
