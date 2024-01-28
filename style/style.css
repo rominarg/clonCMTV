@@ -60,3 +60,22 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.navbar,
+.navbar-default,
+.navegacion-principal {
+  font-family: 'roboto_regular', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: start;
+  letter-spacing: normal; /* O ajusta según sea necesario */
+}
+
+/* Estilos específicos para pantallas con un ancho de 1263px */
+@media screen and (min-width: 1263px) {
+  .navbar,
+  .navbar-default,
+  .navegacion-principal {
+    /* Agrega estilos específicos para pantallas grandes aquí */
+  }
+}
